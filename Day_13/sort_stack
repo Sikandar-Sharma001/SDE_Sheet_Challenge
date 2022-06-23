@@ -1,0 +1,7 @@
+public class Solution {
+
+	public static void sortStack(Stack<Integer> stack) {
+        Collections.sort(stack);
+	}
+
+}
