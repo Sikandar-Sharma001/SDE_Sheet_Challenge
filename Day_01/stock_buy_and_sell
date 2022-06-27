@@ -1,0 +1,12 @@
+public class Solution{
+    public static int maximumProfit(ArrayList<Integer> prices){
+        // Write your code here.
+        int min_value=prices.get(0);
+        int maxprofit=0;
+        for(int i:prices){
+            min_value=Math.min(min_value,i);
+            maxprofit=Math.max(maxprofit,i-min_value);
+        }
+        return maxprofit;
+    }
+}
