@@ -1,0 +1,25 @@
+public class Solution {
+
+    public static int[] missingAndRepeating(ArrayList<Integer> arr, int n) {
+        // Write your code here
+        int ans[]=new int[2];
+        HashMap<Integer,Integer> mp=new HashMap<>();
+        for(int i=1; i<=n; i++){
+            mp.put(i,0);
+        }
+        for(int i:arr){
+            if(mp.containsKey(i)){
+                mp.put(i,mp.get(i)+1);
+            }
+        }
+        for(int i:mp.keySet()){
+            if(mp.get(i)==2){
+                ans[1]=i;
+            }
+            if(mp.get(i)==0){
+                ans[0]=i;
+            }
+        }
+        return ans;
+    }
+}
