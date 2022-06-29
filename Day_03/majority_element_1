@@ -1,0 +1,36 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        // if(nums.length==1){return nums[0];}
+        // Map<Integer,Integer> mp=new HashMap<>();
+        // for(int i:nums){
+        //     if(!mp.containsKey(i)){
+        //         mp.put(i,1);
+        //     }
+        //     else{
+        //         mp.put(i,mp.get(i)+1);
+        //     }
+        // }
+        // for(int i:mp.keySet()){
+        //     if(mp.get(i)>nums.length/2){
+        //         return i;
+        //     }
+        // }
+        // return -1;
+        
+        if(nums.length==1){return nums[0];}
+        int count=0;
+        int major_element=nums[0];
+        for(int i:nums){
+            if(count==0){
+                major_element=i;
+            }
+            if(i==major_element){
+                count++;
+            }
+            else{
+                count--;
+            }
+        }
+        return major_element;
+    }
+}
