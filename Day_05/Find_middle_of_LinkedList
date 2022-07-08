@@ -1,0 +1,11 @@
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode turtle1=head;
+        ListNode turtle2=head;
+        while(turtle2!=null && turtle2.next!=null){
+            turtle1=turtle1.next;
+            turtle2=turtle2.next.next;
+        }
+        return turtle1;
+    }
+}
