@@ -1,0 +1,27 @@
+class Solution {
+    public static void swap(int a, int b, int[] arr){
+        int temp=arr[a];
+        arr[a]=arr[b];
+        arr[b]=temp;
+    }
+    public static void printPermutations(int index, int[] arr, List<List<Integer>> ans){
+        if(index==arr.length){
+            List<Integer> temp=new ArrayList<>();
+            for(int i=0; i<arr.length; i++){
+                temp.add(arr[i]);
+            }
+            ans.add(temp);
+            return;
+        }
+        for(int i=index; i<arr.length; i++){
+            swap(i,index,arr);
+            printPermutations(index+1,arr,ans);
+            swap(i,index,arr);
+        }
+    }
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        printPermutations(0,nums,ans);
+        return ans;
+    }
+}
