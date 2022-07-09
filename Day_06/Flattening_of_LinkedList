@@ -1,0 +1,30 @@
+public class Solution {
+    public static Node mergeLists(Node n1, Node n2){
+        Node temp=new Node(0);
+        Node ans=temp;
+        while(n1!=null && n2!=null){
+            if(n1.data<n2.data){
+                temp.child=n1;
+                n1=n1.child;
+                temp=temp.child;
+            }
+            else{
+                temp.child=n2;
+                n2=n2.child;
+                temp=temp.child;
+            }
+        }
+        if(n1==null) temp.child=n2;
+        else temp.child=n1;
+        return ans.child;
+    }
+	public static Node flattenLinkedList(Node start) {
+		 //Write your code here
+        if(start==null || start.next==null){
+            return start;
+        }
+        start.next=flattenLinkedList(start.next);
+        start=mergeLists(start,start.next);
+        return start;
+	}
+}
