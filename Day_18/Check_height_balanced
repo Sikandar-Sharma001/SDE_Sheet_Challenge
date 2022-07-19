@@ -1,0 +1,31 @@
+class Solution {
+    public int checkHeight(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int leftH=checkHeight(root.left);
+        if(leftH==-1){
+            return -1;
+        }
+        int rightH=checkHeight(root.right);
+        if(rightH==-1){
+            return -1;
+        }
+        
+        if(Math.abs(leftH-rightH)>1){
+            return -1;
+        }
+        else{
+            return 1+Math.max(leftH,rightH);
+        }
+        
+    }
+    public boolean isBalanced(TreeNode root) {
+        // int n=checkHeight(root);
+        // if(n==-1){
+        //     return false;
+        // }
+        // return true;
+        return checkHeight(root)!=-1;
+    }
+}
