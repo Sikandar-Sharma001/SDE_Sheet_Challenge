@@ -1,0 +1,24 @@
+class Tree{
+    public void checkPaths(Node node, ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> list){
+        list.add(node.data);
+        if(node.left==null && node.right==null){
+            ans.add(new ArrayList<Integer>(list));
+        }
+        if(node.left!=null){
+            checkPaths(node.left,ans,list);
+        }
+        if(node.right!=null){
+            checkPaths(node.right,ans,list);
+        }
+        list.remove(list.size()-1);
+        
+    }
+    public ArrayList<ArrayList<Integer>> Paths(Node root){
+        // Code here
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        ArrayList<Integer> list=new ArrayList<>();
+        checkPaths(root,ans,list);
+        return ans;
+    }
+    
+}

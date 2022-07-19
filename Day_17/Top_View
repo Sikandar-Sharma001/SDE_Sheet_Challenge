@@ -1,0 +1,44 @@
+class Solution
+{
+    static class pair{
+        Node node;
+        int ver;
+        public pair(Node _node, int x){
+            node=_node;
+            ver=x;
+        }
+    }
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    static ArrayList<Integer> topView(Node root)
+    {
+        // add your code
+        ArrayList<Integer> ans=new ArrayList<>();
+        if(root==null){
+            return ans;
+        }
+        TreeMap<Integer,Integer> mp=new TreeMap<>();
+        Queue<pair> q=new LinkedList<pair>();
+        q.offer(new pair(root,0));
+        while(!q.isEmpty()){
+            pair p=q.poll();
+            Node node=p.node;
+            int v=p.ver;
+            
+            if(!mp.containsKey(v)){
+                mp.put(v,node.data);
+            }
+            
+            if(node.left!=null){
+                q.offer(new pair(node.left,v-1));
+            }
+            if(node.right!=null){
+                q.offer(new pair(node.right,v+1));
+            }
+        }
+        for(int i: mp.values()){
+            ans.add(i);
+        }
+        return ans;
+    }
+}
