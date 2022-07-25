@@ -1,0 +1,22 @@
+class Solution {
+    int count=1;
+    int ans=0;
+    void inorderTraversal(TreeNode root, int k){
+        if(root==null){
+            return;
+        }
+        inorderTraversal(root.left,k);
+        if(count==k){
+            ans=root.val;
+            count++;
+            return;
+        }
+        count++;
+        inorderTraversal(root.right,k);
+    }
+    public int kthSmallest(TreeNode root, int k) {
+        // PriorityQueue<Integer> pq=new PriorityQueue<>();
+        inorderTraversal(root,k);
+        return ans;
+    }
+}

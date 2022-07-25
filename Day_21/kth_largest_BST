@@ -1,0 +1,22 @@
+class Solution
+{
+    // return the Kth largest element in the given BST rooted at 'root'
+    void inorder(Node root, PriorityQueue<Integer> pq){
+        if(root==null){
+            return;
+        }
+        inorder(root.left,pq);
+        pq.add(root.data);
+        inorder(root.right,pq);
+    }
+    public int kthLargest(Node root,int K)
+    {
+        //Your code here
+        PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
+        inorder(root,pq);
+        while(K-->1){
+            pq.poll();
+        }
+        return pq.peek();
+    }
+}
