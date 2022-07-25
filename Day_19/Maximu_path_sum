@@ -1,0 +1,16 @@
+class Solution {
+    int sum=Integer.MIN_VALUE;
+    int heightSum(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int lsum=Math.max(0,heightSum(root.left));
+        int rsum=Math.max(0,heightSum(root.right));
+        sum=Math.max(sum,lsum+rsum+root.val);
+        return root.val+Math.max(lsum,rsum);
+    }
+    public int maxPathSum(TreeNode root) {
+        heightSum(root);
+        return sum;
+    }
+}
