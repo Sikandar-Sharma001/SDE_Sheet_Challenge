@@ -1,0 +1,15 @@
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return arrayToBST(nums,0,nums.length-1);
+    }
+    public TreeNode arrayToBST(int[] nums, int leftIndex, int rightIndex){
+        if(leftIndex>rightIndex){
+            return null;
+        }
+        int middleIndex=(leftIndex+rightIndex)/2;
+        TreeNode node=new TreeNode(nums[middleIndex]);
+        node.left=arrayToBST(nums,leftIndex,middleIndex-1);
+        node.right=arrayToBST(nums,middleIndex+1,rightIndex);
+        return node;
+    }
+}
